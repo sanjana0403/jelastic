@@ -33,6 +33,8 @@ public class UpdateFieldRequest {
     @NotNull
     private String indexName;
 
+    private String mappingType;
+
     @NotNull
     private String referenceId;
 

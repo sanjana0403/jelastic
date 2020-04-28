@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jelastic.core.models.query.filter.number;
+package io.github.jelastic.core.models.query.filter.range;
 
 import io.github.jelastic.core.models.query.filter.FilterType;
 import io.github.jelastic.core.models.query.filter.FilterVisitor;
@@ -27,15 +27,14 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class GreaterEqualsFilter extends NumberFilter {
+public class LesserThanFilter extends RangeFilter {
 
-    public GreaterEqualsFilter() {
-        super(FilterType.GREATER_EQUAL);
+    public LesserThanFilter() {
+        super(FilterType.LESS_THAN);
     }
 
-    public GreaterEqualsFilter(String field, Number value, boolean includeLower,
-                               boolean includeUpper) {
-        super(FilterType.GREATER_EQUAL, field, value, includeLower, includeUpper);
+    public LesserThanFilter(String field, Object value, boolean includeLower, boolean includeUpper) {
+        super(FilterType.LESS_THAN, field, value, includeLower, includeUpper);
     }
 
     @Override

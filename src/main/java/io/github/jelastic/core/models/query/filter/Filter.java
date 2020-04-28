@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.google.common.base.Strings;
 import io.github.jelastic.core.models.query.filter.general.*;
-import io.github.jelastic.core.models.query.filter.number.*;
+import io.github.jelastic.core.models.query.filter.range.*;
 import io.github.jelastic.core.models.query.filter.predicate.AndFilter;
 import io.github.jelastic.core.models.query.filter.predicate.ORFilter;
 import lombok.Data;

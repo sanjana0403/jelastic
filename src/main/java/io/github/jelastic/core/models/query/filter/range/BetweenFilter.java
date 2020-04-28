@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jelastic.core.models.query.filter.number;
+package io.github.jelastic.core.models.query.filter.range;
 
+import io.github.jelastic.core.models.query.filter.Filter;
 import io.github.jelastic.core.models.query.filter.FilterType;
 import io.github.jelastic.core.models.query.filter.FilterVisitor;
 import lombok.Data;
@@ -27,14 +28,20 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class LesserThanFilter extends NumberFilter {
+public class BetweenFilter extends Filter {
 
-    public LesserThanFilter() {
-        super(FilterType.LESS_THAN);
+    private Object from;
+
+    private Object to;
+
+    public BetweenFilter() {
+        super(FilterType.BETWEEN);
     }
 
-    public LesserThanFilter(String field, Number value, boolean includeLower, boolean includeUpper) {
-        super(FilterType.LESS_THAN, field, value, includeLower, includeUpper);
+    public BetweenFilter(String field, Object from, Object to) {
+        super(FilterType.BETWEEN, field);
+        this.from = from;
+        this.to = to;
     }
 
     @Override

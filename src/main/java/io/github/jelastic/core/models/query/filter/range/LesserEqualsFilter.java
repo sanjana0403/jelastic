@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jelastic.core.models.query.filter.number;
+package io.github.jelastic.core.models.query.filter.range;
 
-import io.github.jelastic.core.models.query.filter.Filter;
+import io.github.jelastic.core.models.query.filter.FilterType;
+import io.github.jelastic.core.models.query.filter.FilterVisitor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -26,24 +27,19 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public abstract class NumberFilter extends Filter {
+public class LesserEqualsFilter extends RangeFilter {
 
-    private Number value;
-
-    private boolean includeLower;
-
-    private boolean includeUpper;
-
-    protected NumberFilter(final String operator) {
-        super(operator);
+    public LesserEqualsFilter() {
+        super(FilterType.LESS_EQUAL);
     }
 
-    protected NumberFilter(final String operator, String field, Number value, boolean includeLower,
-                           boolean includeUpper) {
-        super(operator, field);
-        this.value = value;
-        this.includeLower = includeLower;
-        this.includeUpper = includeUpper;
+    public LesserEqualsFilter(String field, Object value, boolean includeLower,
+                              boolean includeUpper) {
+        super(FilterType.LESS_EQUAL, field, value, includeLower, includeUpper);
     }
 
+    @Override
+    public <V> V accept(FilterVisitor<V> visitor) {
+        return visitor.visit(this);
+    }
 }

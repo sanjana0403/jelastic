@@ -16,7 +16,7 @@
 package io.github.jelastic.core.models.query.filter;
 
 import io.github.jelastic.core.models.query.filter.general.*;
-import io.github.jelastic.core.models.query.filter.number.*;
+import io.github.jelastic.core.models.query.filter.range.*;
 import io.github.jelastic.core.models.query.filter.predicate.AndFilter;
 import io.github.jelastic.core.models.query.filter.predicate.ORFilter;
 
